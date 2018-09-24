@@ -1,0 +1,13 @@
+---
+# tasks file for ansible-role-netdata
+
+- name: Download netdata
+  get_url:
+    url: http://my-netdata.io/kickstart-static64.sh
+    dest: /tmp/kickstart-static64.sh
+    mode: 0644
+
+- name: Install netdata
+  command: /bin/bash /tmp/kickstart-static64.sh --dont-wait
+  args:
+    creates: /opt/netdata
